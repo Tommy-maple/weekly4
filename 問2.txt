@@ -1,0 +1,67 @@
+MariaDB [coachtest]>  CREATE TABLE products(id int AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20) NOT NULL, price int NOT NULL, expiration_date DATE NOT NULL, number INT NOT NULL);
+Query OK, 0 rows affected (0.034 sec)
+
+MariaDB [coachtest]> describe products;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| id              | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name            | varchar(20) | NO   |     | NULL    |                |
+| price           | int(11)     | NO   |     | NULL    |                |
+| expiration_date | date        | NO   |     | NULL    |                |
+| number          | int(11)     | NO   |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.030 sec)
+
+MariaDB [coachtest]> INSERT INTO products SET name='納豆', price=250, expiration_date=20210417, number=3;
+Query OK, 1 row affected (0.018 sec)
+
+MariaDB [coachtest]> INSERT INTO products SET name='豆腐', price=170, expiration_date=20210423, number=2;
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [coachtest]> INSERT INTO products SET name='玉ねぎ', price=120, expiration_date=20210421, number=4;
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [coachtest]> INSERT INTO products SET name='ニンニク', price=250, expiration_date=20210409, number=5;
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [coachtest]> INSERT INTO products SET name='キムチ', price=300, expiration_date=20210422, number=2;
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [coachtest]> SELECT * FROM products;
++----+----------+-------+-----------------+--------+
+| id | name     | price | expiration_date | number |
++----+----------+-------+-----------------+--------+
+|  1 | 納豆     |   250 | 2021-04-17      |      3 |
+|  2 | 豆腐     |   170 | 2021-04-23      |      2 |
+|  3 | 玉ねぎ   |   120 | 2021-04-21      |      4 |
+|  4 | ニンニク |   250 | 2021-04-09      |      5 |
+|  5 | キムチ   |   300 | 2021-04-22      |      2 |
++----+----------+-------+-----------------+--------+
+5 rows in set (0.014 sec)
+
+MariaDB [coachtest]> SELECT name,expiration_date FROM products;
++----------+-----------------+
+| name     | expiration_date |
++----------+-----------------+
+| 納豆     | 2021-04-17      |
+| 豆腐     | 2021-04-23      |
+| 玉ねぎ   | 2021-04-21      |
+| ニンニク | 2021-04-09      |
+| キムチ   | 2021-04-22      |
++----------+-----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [coachtest]>
+MariaDB [coachtest]> SELECT * FROM products WHERE price>=250 || number<=3;
++----+----------+-------+-----------------+--------+
+| id | name     | price | expiration_date | number |
++----+----------+-------+-----------------+--------+
+|  1 | 納豆     |   250 | 2021-04-17      |      3 |
+|  2 | 豆腐     |   170 | 2021-04-23      |      2 |
+|  4 | ニンニク |   250 | 2021-04-09      |      5 |
+|  5 | キムチ   |   300 | 2021-04-22      |      2 |
++----+----------+-------+-----------------+--------+
+4 rows in set (0.015 sec)
+
+MariaDB [coachtest]>
